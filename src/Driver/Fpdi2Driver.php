@@ -29,7 +29,7 @@ final class Fpdi2Driver implements DriverInterface
         }
     }
 
-    public function merge(SourceInterface ...$sources): string
+    public function merge(SourceInterface ...$sources, $output = 'S', $path = ''): string
     {
         $sourceName = '';
 
@@ -54,7 +54,7 @@ final class Fpdi2Driver implements DriverInterface
                 }
             }
 
-            return $fpdi->Output('', 'S');
+            return $fpdi->Output($path, $output);
         } catch (\Exception $e) {
             throw new Exception("'{$e->getMessage()}' in '$sourceName'", 0, $e);
         }
